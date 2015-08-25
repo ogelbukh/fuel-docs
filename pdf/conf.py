@@ -28,4 +28,5 @@ pdf_documents = [
     ('pdf/pdf_terminology', u'Mirantis-OpenStack-6.1-Terminology-Reference', u'Terminology Reference', u'2015, Mirantis Inc.'),
     ('pdf/pdf_file-ref', u'Mirantis-OpenStack-6.1-File-Format-Reference', u'File Format Reference', u'2015, Mirantis Inc.'),
     ('pdf/pdf_relnotes', u'Mirantis-OpenStack-6.1-RelNotes', u'Release Notes', u'2015, Mirantis Inc.', {'pdf_use_toc': False}),
+    ('pdf/pdf_upgrade', u'Mirantis-OpenStack-7.0-OpenStack-Upgrade', u'OpenStack Upgrade', u'2015, Mirantis Inc.'),
 ]
