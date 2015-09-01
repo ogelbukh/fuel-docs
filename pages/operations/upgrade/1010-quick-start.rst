@@ -73,7 +73,13 @@ Use ``fuel plugins`` command to install RPM packages that were built:
 
 ::
 
-    fuel plugins --install fuel-plugin-*/*.rpm
+    ls -1 */*.rpm | xargs -L1 -t fuel plugins --install
+
+Check the installed plugins:
+
+::
+
+    fuel plugins --list
 
 Create a mirror of package repositories
 +++++++++++++++++++++++++++++++++++++++
