@@ -50,7 +50,7 @@ scenario:
 Install Fuel plugins
 ++++++++++++++++++++
 
-Download required plugins and build them with ``fuel-plugin-builder```:
+Download required plugins and build them with ``fuel-plugin-builder``:
 
 ::
 
