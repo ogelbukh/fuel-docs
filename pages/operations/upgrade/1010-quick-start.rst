@@ -56,9 +56,10 @@ Download required plugins and build them with ``fuel-plugin-builder```:
 
     git clone https://github.com/stackforge/fuel-plugins.git
     pip install fuel-plugins/fuel-plugin-builder
-    git clone https://github.com/stackforge/fuel-plugin-external-zabbix/tree/master
-    git clone https://github.com/stackforge/fuel-plugin-external-emc/tree/master
-    git clone https://github.com/stackforge/fuel-plugin-zabbix-snmptrapd/tree/master
+    
+    git clone https://github.com/stackforge/fuel-plugin-external-zabbix
+    git clone https://github.com/stackforge/fuel-plugin-external-emc
+    git clone https://github.com/stackforge/fuel-plugin-zabbix-snmptrapd
     git clone https://github.com/stackforge/fuel-plugin-zabbix-monitoring-emc
     git clone https://github.com/stackforge/fuel-plugin-zabbix-monitoring-extreme-networks
 
@@ -66,21 +67,13 @@ Build the plugins using ``fpb`` command:
 
 ::
 
-    fpb --build fuel-plugin-external-zabbix
-    fpb --build fuel-plugin-external-emc
-    fpb --build fuel-plugin-zabbix-snmptrapd
-    fpb --build fuel-plugin-zabbix-monitoring-emc
-    fpb --build fuel-plugin-zabbix-monitoring-extreme-networks
+    ls -1d fuel-plugin-* | xargs -L1 -t fpb --build
 
 Use ``fuel plugins`` command to install RPM packages that were built:
 
 ::
 
-    fuel plugins --install fuel-plugin-external-zabbix/\*.rpm
-    fuel plugins --install fuel-plugin-external-emc/\*.rpm
-    fuel plugins --install fuel-plugin-zabbix-snmptrapd/\*.rpm
-    fuel plugins --install fuel-plugin-zabbix-monitoring-emc/\*.rpm
-    fuel plugins --install fuel-plugin-zabbix-monitoring-extreme-networks/\*.rpm
+    fuel plugins --install fuel-plugin-*/*.rpm
 
 Create a mirror of package repositories
 +++++++++++++++++++++++++++++++++++++++
