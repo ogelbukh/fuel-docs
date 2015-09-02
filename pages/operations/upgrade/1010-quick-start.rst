@@ -36,6 +36,29 @@ The sequence of steps for each version of tarball is pretty similar:
 * execute ``upgrade.sh`` wrapper script to start upgrade procedure;
 * enter password for ``admin`` user when prompted.
 
+Create a mirror of package repositories
++++++++++++++++++++++++++++++++++++++++
+
+To be able to install OpenStack without having access to Internet from the nodes
+in environment, install ``fuel-createmirror`` tool with the following
+command:
+
+::
+
+    yum install -y fuel-createmirror
+
+Run the following command to create a local mirror of Ubuntu base repository:
+
+::
+
+    fuel-createmirror -U
+
+Run the following command to create a local mirror of MOS repository:
+
+::
+
+    fuel-createmirror -M
+
 Install packages
 ++++++++++++++++
 
@@ -80,29 +103,6 @@ Check the installed plugins:
 ::
 
     fuel plugins --list
-
-Create a mirror of package repositories
-+++++++++++++++++++++++++++++++++++++++
-
-To be able to install OpenStack without having access to Internet from the nodes
-in environment, install ``fuel-createmirror`` tool with the following
-command:
-
-::
-
-    yum install -y fuel-createmirror
-
-Run the following command to create a local mirror of Ubuntu base repository:
-
-::
-
-    fuel-createmirror -U
-
-Run the following command to create a local mirror of MOS repository:
-
-::
-
-    fuel-createmirror -M
 
 Install the Upgrade Script
 ++++++++++++++++++++++++++
