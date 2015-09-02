@@ -177,18 +177,19 @@ using the following command:
 Install 7.0 Controllers in isolation
 ++++++++++++++++++++++++++++++++++++
 
-Pick one of the Controllers in your environment by ID and remember
-that ID:
+At this point, you should have 3 nodes added as unallocated to your Fuel
+inventory. The nodes must be connected to the same L2 networks as existing
+5.1.1/5.29 Controllers are.
+
+Use the IDs of additional nodes to install Controllers with the new version
+of OpenStack onto them:
 
 ::
 
-    fuel node list --env ${ORIG_ID} | awk -F\| '$7~/controller/{print($0)}'
+    octane install-node --isolated $ORIG_ID $SEED_ID <ID1> <ID2> <ID3>
 
-Use the ID of the Controller to upgrade it with the following command:
-
-::
-
-    octane upgrade-node --isolated $SEED_ID <ID>
+Now you need to wait until Controllers in Upgrade Seed environment are in
+'ready' status.
 
 Sync Glance images data
 +++++++++++++++++++++++
@@ -212,6 +213,14 @@ Start Maintenance window
 At this point we need to place the cloud in Maintenance mode, i.e. block access
 to public API endpoints and stop all services that talk to OpenStack state DB.
 This is required for dump, restore and upgrade of the DB.
+
+.. notice::
+
+    It is strongly recommended that all users of the cloud being upgraded shut
+    down their virtual machines gracefully in advance of the Maintenance Window.
+    Otherwise, those virtual machines will be stopped abruptly (equivalent to
+    pulling power cord), which might cause data loss and other unexpected
+    conseqences.
 
 Upgrade State Database
 ++++++++++++++++++++++
