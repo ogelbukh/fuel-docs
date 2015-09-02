@@ -19,6 +19,11 @@ each command does and why, see the following sections:
     environment. Please, read the detailed sections below carefully
     before you proceed with these commands.
 
+.. notice::
+
+    Before proceeding, make sure that nodes in OpenStack cluster can
+    access Internet. It is required for successful upgrade.
+
 Upgrade the Fuel Master node
 ++++++++++++++++++++++++++++
 
@@ -179,7 +184,7 @@ Install 7.0 Controllers in isolation
 
 At this point, you should have 3 nodes added as unallocated to your Fuel
 inventory. The nodes must be connected to the same L2 networks as existing
-5.1.1/5.29 Controllers are.
+5.1.1/5.2.9 Controllers are.
 
 Use the IDs of additional nodes to install Controllers with the new version
 of OpenStack onto them:
