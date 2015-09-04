@@ -83,8 +83,8 @@ Download required plugins and build them with ``fuel-plugin-builder``:
 ::
 
     git clone https://github.com/stackforge/fuel-plugins.git
-    pip install fuel-plugins/fuel-plugin-builder
-    
+    cd fuel-plugins/fuel_plugin_builder/ && pip install .
+    cd -
     git clone https://github.com/stackforge/fuel-plugin-external-zabbix
     git clone https://github.com/stackforge/fuel-plugin-external-emc
     git clone https://github.com/stackforge/fuel-plugin-zabbix-snmptrapd
