@@ -52,6 +52,16 @@ command:
 
     yum install -y fuel-createmirror
 
+Add packages required for plugins installation to the list of mirrored packages:
+
+::
+
+    cat << EOF >> /opt/fuel-createmirror-7.0/config/requirements-deb.txt
+    ipstate
+    snmptt
+    php5-mysql
+    EOF
+
 Run the following command to create a local mirror of Ubuntu base repository:
 
 ::
