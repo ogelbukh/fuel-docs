@@ -125,6 +125,16 @@ install the Upgrade Script in the system:
 
     yum install -y fuel-octane
 
+Prepare Fuel installer for upgrade
+++++++++++++++++++++++++++++++++++
+
+Run the following command on the Fuel Master node to prepare for
+upgrade of environment:
+
+::
+
+    octane prepare
+
 Pick environment to upgrade
 +++++++++++++++++++++++++++
 
