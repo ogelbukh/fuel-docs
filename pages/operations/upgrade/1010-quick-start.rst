@@ -1,16 +1,13 @@
-.. index:: Upgrade Environment Quick Start
+.. index:: Upgrade Environment Runbook
 
 .. _Upg_QuickStart:
 
-Upgrade Environment Quick Start
--------------------------------
+Upgrade Environment Runbook
+---------------------------
 
-This guide lists commands required to upgrade a 5.1.1 (5.2.9) environment
+This Runbook lists commands required to upgrade a 5.1.1 (5.2.9) environment
 to version 7.0 with brief comments. For the detailed description of what
-each command does and why, see the following sections:
-
-* :ref:`Detailed upgrade procedure<upg_sol>`
-* :ref:`Detailed description of commands<upg_script>`
+each command does and why, see the Operations Guide.
 
 .. CAUTION::
 
@@ -251,6 +248,13 @@ This is required for dump, restore and upgrade of the DB.
     pulling power cord), which might cause data loss and other unexpected
     conseqences.
 
+To properly stop virtual machines, users could use the following command of Nova
+CLI client:
+
+::
+
+    nova stop <instance-id>
+
 Upgrade State Database
 ++++++++++++++++++++++
 
@@ -299,3 +303,19 @@ original 5.2.9 environment with the following command:
 ::
 
     fuel env --env $ORIG_ID --delete
+
+Finish Maintenance Window
++++++++++++++++++++++++++
+
+At this point, users should restore their virtual machines using
+the following command of Nova CLI client:
+
+::
+
+    nova start <instance-id>
+
+Another option to use is:
+
+::
+
+    nova reboot --hard <instance-id>
