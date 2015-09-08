@@ -183,19 +183,19 @@ _________________________________
 Prepare network template by copying it to the current directory and rename
 it to ``network_template_${SEED_ID}.yaml``.
 
-Run the following command to upload network template to the Upgrade Seed
-cluster:
-
-::
-
-    fuel network-template --env $SEED_ID --upload
-
 Copy network groups from the original environment to the Upgrade Seede
 using the following command:
 
 ::
 
     octane sync-networks $ORIG_ID $SEED_ID
+
+Run the following command to upload network template to the Upgrade Seed
+cluster:
+
+::
+
+    fuel network-template --env $SEED_ID --upload
 
 Install 7.0 Controllers in isolation
 ++++++++++++++++++++++++++++++++++++
@@ -217,18 +217,24 @@ Now you need to wait until Controllers in Upgrade Seed environment are in
 Sync Glance images data
 +++++++++++++++++++++++
 
+Prepare Upgrade Seed environment for replication of Glance images data:
+
+::
+
+    octane prepare-sync-images $ORIG_ID $SEED_ID
+
 To replicate Glance images from original environment to the Upgrade Seed, use
 the following command:
 
 ::
 
     octane sync-images $ORIG_ID $SEED_ID \
-        <orig-glance-user> <seed-glance-user> <swift-endpoint>
+        <orig-glance-user> <seed-glance-user> <swift-interface>
 
 Replace ``orig-glance-user`` with the name of user for Glance service in the
 original environment. Replace ``seed-glance-user`` with the name of user for
-Glance service in the Upgrade Seed environment. Replace ``swift-endpoint`` with
-URL of swift-proxy in the Upgrade Seed environment.
+Glance service in the Upgrade Seed environment. Replace ``swift-interface``
+with the name of interface which the ``swift-proxy-server`` is listening on.
 
 Start Maintenance window
 ++++++++++++++++++++++++
