@@ -16,8 +16,6 @@ each command does and why, see the Operations Guide.
     environment. Please, read the detailed sections below carefully
     before you proceed with these commands.
 
-.. notice::
-
     Before proceeding, make sure that nodes in OpenStack cluster can
     access Internet. It is required for successful upgrade.
 
@@ -240,7 +238,7 @@ At this point we need to place the cloud in Maintenance mode, i.e. block access
 to public API endpoints and stop all services that talk to OpenStack state DB.
 This is required for dump, restore and upgrade of the DB.
 
-.. notice::
+.. note::
 
     It is strongly recommended that all users of the cloud being upgraded shut
     down their virtual machines gracefully in advance of the Maintenance Window.
