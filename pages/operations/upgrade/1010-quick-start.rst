@@ -87,7 +87,7 @@ Install required packages to build fuel plugins:
 
 ::
 
-    yum install createrepo dpkg-devel dpkg-dev rpm rpm-build
+    yum -y install createrepo dpkg-devel dpkg-dev rpm rpm-build
 
 Download required plugins and build them with ``fuel-plugin-builder``:
 
