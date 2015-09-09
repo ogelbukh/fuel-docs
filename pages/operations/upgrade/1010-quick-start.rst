@@ -174,9 +174,8 @@ environment with settings of plugins in the Upgrade Seed environment:
 
 ::
 
-    octane update-plugin-settings \
-    --plugins zabbix_monitoring,zabbix_monitoring_extreme_networks,emc_vnx,zabbix_monitoring_emc,zabbix_snmptrapd \
-    $ORIG_ID $SEED_ID
+    ls -1d fuel-plugin-* | sed -e's/^fuel-plugin-//g;s/-/_/g' |\
+        xargs -L1 -I% octane update-plugin-settings --plugins % $ORIG_ID $SEED_ID
 
 Sync network groups configuration
 _________________________________
