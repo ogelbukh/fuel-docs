@@ -292,6 +292,17 @@ Replace ``<path-to-template>`` with path to file
 ``network_template_${SEED_ID}.yaml`` that was used before to upload the
 network template to Upgrade Seed environment (see above).
 
+Cleanup Upgrade Seed environment
+++++++++++++++++++++++++++++++++
+
+Remove traces of original environment, i.e. remaining service entries in
+Nova DB and agents in Neutron DB with node IDs of controllers in original
+environment. Run the following command to remove obsolete services/agents:
+
+::
+
+    octane cleanup $SEED_ID
+
 Uninstall Octane script
 +++++++++++++++++++++++
 

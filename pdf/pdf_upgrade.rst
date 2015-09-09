@@ -24,8 +24,6 @@
 
 .. toctree::
 
-.. include:: /pages/preface/preface.rst
-
 .. _upgrade_guide:
 
 .. include:: /contents/contents-upgrade.rst
