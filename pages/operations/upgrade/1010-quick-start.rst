@@ -209,7 +209,8 @@ of OpenStack onto them:
 
 ::
 
-    octane install-node --isolated $ORIG_ID $SEED_ID <ID1> <ID2> <ID3> --networks public management
+    octane install-node --isolated $ORIG_ID $SEED_ID <ID1> <ID2> <ID3> \
+        --networks public management
 
 Now you need to wait until Controllers in Upgrade Seed environment are in
 'ready' status.
@@ -285,7 +286,11 @@ identified by ID:
 
 ::
 
-    octane upgrade-node $SEED_ID <ID>
+    octane upgrade-node --template <path-to-template> $SEED_ID <ID>
+
+Replace ``<path-to-template>`` with path to file
+``network_template_${SEED_ID}.yaml`` that was used before to upload the
+network template to Upgrade Seed environment (see above).
 
 Uninstall Octane script
 +++++++++++++++++++++++
@@ -295,7 +300,13 @@ command to restore the original state of the 7.0 Fuel Master node:
 
 ::
 
-    octane cleanup-fuel
+    octane revert-prepare
+
+Uninstall RPM package for Octane script:
+
+::
+
+    yum -y remove fuel-octane
 
 Delete the original 6.1 environment
 +++++++++++++++++++++++++++++++++++++
