@@ -52,7 +52,7 @@ Add packages required for plugins installation to the list of mirrored packages:
 ::
 
     cat << EOF >> /opt/fuel-createmirror-7.0/config/requirements-deb.txt
-    ipstate
+    iptstate
     snmptt
     php5-mysql
     EOF
