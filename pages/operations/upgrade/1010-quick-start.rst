@@ -249,7 +249,8 @@ the following command:
 Replace ``orig-glance-user`` with the name of user for Glance service in the
 original environment. Replace ``seed-glance-user`` with the name of user for
 Glance service in the Upgrade Seed environment. Replace ``swift-interface``
-with the name of interface which the ``swift-proxy-server`` is listening on.
+with the name of interface which the ``swift-proxy-server`` is listening on
+(typically it will be ``br-storage`` or ``br-swift``).
 
 .. raw:: pdf
 
