@@ -156,6 +156,10 @@ Note the ID of the environment and store it in a variable:
 
     export ORIG_ID=<ID>
 
+.. raw:: pdf
+
+    PageBreak
+
 Create an Upgrade Seed environment
 ++++++++++++++++++++++++++++++++++
 
@@ -197,6 +201,10 @@ cluster:
 
     fuel network-template --env $SEED_ID --upload
 
+.. raw:: pdf
+
+    PageBreak
+
 Install 7.0 Controllers in isolation
 ++++++++++++++++++++++++++++++++++++
 
@@ -236,6 +244,10 @@ Replace ``orig-glance-user`` with the name of user for Glance service in the
 original environment. Replace ``seed-glance-user`` with the name of user for
 Glance service in the Upgrade Seed environment. Replace ``swift-interface``
 with the name of interface which the ``swift-proxy-server`` is listening on.
+
+.. raw:: pdf
+
+    PageBreak
 
 Start Maintenance window
 ++++++++++++++++++++++++
@@ -291,6 +303,10 @@ identified by ID:
 Replace ``<path-to-template>`` with path to file
 ``network_template_${SEED_ID}.yaml`` that was used before to upload the
 network template to Upgrade Seed environment (see above).
+
+.. raw:: pdf
+
+    PageBreak
 
 Cleanup Upgrade Seed environment
 ++++++++++++++++++++++++++++++++
