@@ -212,6 +212,8 @@ At this point, you should have 3 nodes added as unallocated to your Fuel
 inventory. The nodes must be connected to the same L2 networks as existing
 5.1.1/5.2.9 Controllers are.
 
+**At this moment these 3 nodes should be rebooted to the new bootstrap.**
+
 Use the IDs of additional nodes to install Controllers with the new version
 of OpenStack onto them:
 
