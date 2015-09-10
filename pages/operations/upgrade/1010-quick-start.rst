@@ -209,7 +209,7 @@ of OpenStack onto them:
 
 ::
 
-    octane install-node --isolated $ORIG_ID $SEED_ID <ID1> <ID2> <ID3>
+    octane install-node --isolated $ORIG_ID $SEED_ID <ID1> <ID2> <ID3> --networks public management
 
 Now you need to wait until Controllers in Upgrade Seed environment are in
 'ready' status.
