@@ -174,7 +174,7 @@ environment with settings of plugins in the Upgrade Seed environment:
 
 ::
 
-    ls -1d fuel-plugin-* | sed -e's/^fuel-plugin-//g;s/-/_/g' |\
+    fuel plugins --list 2>/dev/null| grep "^[0-9]" | awk '{ print $3 }' |\
         xargs -L1 -I% octane update-plugin-settings --plugins % $ORIG_ID $SEED_ID
 
 Sync network groups configuration
