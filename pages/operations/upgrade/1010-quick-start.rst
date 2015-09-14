@@ -236,7 +236,7 @@ Prepare Upgrade Seed environment for replication of Glance images data:
 
 ::
 
-    octane prepare-sync-images $ORIG_ID $SEED_ID
+    octane sync-images-prepare $ORIG_ID $SEED_ID
 
 To replicate Glance images from original environment to the Upgrade Seed, use
 the following command:
