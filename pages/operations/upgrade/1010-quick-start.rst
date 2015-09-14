@@ -238,6 +238,19 @@ Prepare Upgrade Seed environment for replication of Glance images data:
 
     octane sync-images-prepare $ORIG_ID $SEED_ID
 
+Now we're need to create an empty glance container in the seed environment:
+
+::
+
+    ssh <seed_node_one>
+    eval "$(grep export ~/openrc |\
+        sed -r -e "s/(OS_(PROJECT|TENANT)_NAME=)'admin'/\1'services'/g" |\
+        sed -r -e "s/(OS_USERNAME=)'admin'/\1'glance'/g")"
+    export OS_PASSWORD=$(grep admin_password /etc/glance/glance-registry.conf | cut -d= -f2)
+    swift post glance
+    swift list
+    exit
+
 To replicate Glance images from original environment to the Upgrade Seed, use
 the following command:
 
