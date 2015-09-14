@@ -236,21 +236,33 @@ Prepare Upgrade Seed environment for replication of Glance images data:
 
 ::
 
-    octane prepare-sync-images $ORIG_ID $SEED_ID
+    octane sync-images-prepare $ORIG_ID $SEED_ID
+
+Now we're need to create an empty glance container in the seed environment:
+
+::
+
+    ssh <seed_node_one>
+    eval "$(grep export ~/openrc |\
+        sed -r -e "s/(OS_(PROJECT|TENANT)_NAME=)'admin'/\1'services'/g" |\
+        sed -r -e "s/(OS_USERNAME=)'admin'/\1'glance'/g")"
+    export OS_PASSWORD=$(grep admin_password /etc/glance/glance-registry.conf | cut -d= -f2)
+    swift post glance
+    swift list
+    exit
 
 To replicate Glance images from original environment to the Upgrade Seed, use
 the following command:
 
 ::
 
-    octane sync-images $ORIG_ID $SEED_ID \
-        <orig-glance-user> <seed-glance-user> <swift-interface>
+    octane sync-images $ORIG_ID $SEED_ID <swift_ep>
 
 Replace ``orig-glance-user`` with the name of user for Glance service in the
 original environment. Replace ``seed-glance-user`` with the name of user for
 Glance service in the Upgrade Seed environment. Replace ``swift-interface``
 with the name of interface which the ``swift-proxy-server`` is listening on
-(typically it will be ``br-storage`` or ``br-swift``).
+(typically it will be ``bond-swift``).
 
 .. raw:: pdf
 
