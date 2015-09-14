@@ -243,13 +243,10 @@ the following command:
 
 ::
 
-    octane sync-images $ORIG_ID $SEED_ID \
-        <orig-glance-user> <seed-glance-user> <swift-interface>
+    octane sync-images %ORIG_ID %SEED_ID <swift_ep>
 
-Replace ``orig-glance-user`` with the name of user for Glance service in the
-original environment. Replace ``seed-glance-user`` with the name of user for
-Glance service in the Upgrade Seed environment. Replace ``swift-interface``
-with the name of interface which the ``swift-proxy-server`` is listening on.
+Replace ``swift-ep`` with the name (``bond-swift`` for example) of the swift endpoint
+from our network template.
 
 .. raw:: pdf
 
