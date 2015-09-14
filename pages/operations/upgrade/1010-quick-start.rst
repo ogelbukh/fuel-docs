@@ -243,7 +243,7 @@ the following command:
 
 ::
 
-    octane sync-images %ORIG_ID %SEED_ID <swift_ep>
+    octane sync-images $ORIG_ID $SEED_ID <swift_ep>
 
 Replace ``swift-ep`` with the name (``bond-swift`` for example) of the swift endpoint
 from our network template.
