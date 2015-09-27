@@ -63,11 +63,55 @@ Run the following command to create a local mirror of Ubuntu base repository:
 
     fuel-createmirror -U
 
+Replace `fuel-createmirror` configuration files to fetch all packages from:
+MOS repository:
+
+::
+
+    cd /opt/fuel-createmirror-7.0/config/
+    cp mos-ubuntu.cfg mos-ubuntu-updatesonly.cfg
+
 Run the following command to create a local mirror of MOS repository:
 
 ::
 
     fuel-createmirror -M
+
+Download cluster's settings file:
+
+::
+
+    fuel --env ${ID} settings -d
+
+Fix wrong repository entry in cluster's settings. Cluster's repositories are
+placed in `[editable][repo_setup][value]` yaml file section. `uri` section of
+repository named `mos` should be changed in following way:
+`http://${fuel_ip}:8080/2015.1.0-7.0/ubuntu/x86_64` ->
+`http://${fuel_ip}:8080/mos-ubuntu`
+
+Example:
+
+Before the change:
+
+::
+
+    - name: mos
+      priority: 1050
+      section: main restricted
+      suite: mos7.0
+      type: deb
+      uri: http://${fuel_ip}:8080/2015.1.0-7.0/ubuntu/x86_64
+
+After the change:
+
+::
+
+    - name: mos
+      priority: 1050
+      section: main restricted
+      suite: mos7.0
+      type: deb
+      uri: http://${fuel_ip}:8080/mos-ubuntu
 
 Install packages
 ++++++++++++++++
