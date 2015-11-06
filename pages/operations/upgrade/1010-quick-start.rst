@@ -282,19 +282,6 @@ Prepare Upgrade Seed environment for replication of Glance images data:
 
     octane sync-images-prepare $ORIG_ID $SEED_ID
 
-Now we're need to create an empty glance container in the seed environment:
-
-::
-
-    ssh <seed_node_one>
-    eval "$(grep export ~/openrc |\
-        sed -r -e "s/(OS_(PROJECT|TENANT)_NAME=)'admin'/\1'services'/g" |\
-        sed -r -e "s/(OS_USERNAME=)'admin'/\1'glance'/g")"
-    export OS_PASSWORD=$(grep admin_password /etc/glance/glance-registry.conf | cut -d= -f2)
-    swift post glance
-    swift list
-    exit
-
 To replicate Glance images from original environment to the Upgrade Seed, use
 the following command:
 
@@ -353,6 +340,26 @@ Run the following command to switch the OpenStack environment to the
 
     octane upgrade-control $ORIG_ID $SEED_ID
 
+Rollback control plane back to 5.1.1 ( 5.2.9 )
+++++++++++++++++++++++++++++++++++++++++++++++
+
+In case if something goes wrong during the control plane switching, there
+is ability to switch the OpenStack environment back to the source 5.2.9
+control plane:
+
+::
+
+    octane rollback-control $SEED_ID $ORIG_ID
+
+.. CAUTION::
+
+   It's not possible to upgrade control plane again after
+   the rollback procedure using the same SEED environment.
+   If your switching control procedure has been broken, you
+   should rollback control plane, delete SEED environment,
+   prepare new SEED environment from the scratch and only after
+   that you can repeat your upgrade control plane procedure.
+   
 Upgrade Compute nodes
 +++++++++++++++++++++
 
